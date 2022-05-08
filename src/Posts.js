@@ -1,5 +1,7 @@
 import React from 'react';
-
+import Topo from './Topo';
+import Conteudo from './Conteudo';
+import Fundo from './Fundo';
 
 export default function Posts () {
 
@@ -8,7 +10,6 @@ export default function Posts () {
     function isLiked() {
         !liked ? setLiked("liked") : setLiked("");
         !liked ? setName("heart") : setName("heart-outline");
-
     }
     function isLikedMain() {
         setLiked("liked");
@@ -32,46 +33,29 @@ export default function Posts () {
     }
     ]
     return (
-        <div class="posts"> 
+        <div class="posts">
         {items.map((item) => (
             <div class="post">
-            <div class="topo">
-              <div class="usuario">
-                <img src={item.userImg}/>
-                {item.user}
-              </div>
-              <div class="acoes">
-                <ion-icon name="ellipsis-horizontal"></ion-icon>
-              </div>
-            </div>
+              <Topo
+                userImg={item.userImg}
+                user={item.user}
+              />
 
-            <div class="conteudo">
-              <img src={item.src} onClick={() => isLikedMain()}/>
-            </div>
-
-            <div class="fundo">
-              <div class="acoes">
-                <div>
-                  <span class={liked}>
-                  <ion-icon name={name} onClick={() => isLiked()}></ion-icon>
-                  </span>
-                  <ion-icon name="chatbubble-outline"></ion-icon>
-                  <ion-icon name="paper-plane-outline"></ion-icon>
-                </div>
-                <div>
-                  <ion-icon name="bookmark-outline"></ion-icon>
-                </div>
-              </div>
-
-              <div class="curtidas">
-                <img src={item.likedImg} />
-                <div class="texto">
-                  Curtido por <strong>{item.liked}</strong> e <strong>outras {item.likes} pessoas</strong>
-                </div>
-              </div>
-            </div>
+              <Conteudo
+              src={item.src}
+              data={isLikedMain}              
+              />
+            
+              <Fundo
+                isLiked={liked}
+                name={name}
+                likedImg={item.likedImg}
+                liked={item.liked}
+                likes={item.likes}
+                data={isLiked}   
+              />            
           </div>
         ))}
-        </div>        
+        </div>
     )
 }
