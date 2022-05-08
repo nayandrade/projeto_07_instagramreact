@@ -310,6 +310,10 @@ body {
   display: none !important;
 }
 
+.liked:nth-child(1) {
+  color: #ED4956;
+}
+
 @media (max-width: 935px) {
   .sidebar {
     display: none;

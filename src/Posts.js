@@ -1,4 +1,20 @@
+import React from 'react';
+
+
 export default function Posts () {
+
+  const [liked, setLiked] = React.useState("");
+  const [name, setName] = React.useState("heart-outline");
+    function isLiked() {
+        !liked ? setLiked("liked") : setLiked("");
+        !liked ? setName("heart") : setName("heart-outline");
+
+    }
+    function isLikedMain() {
+        setLiked("liked");
+        setName("heart");
+    }
+
     const items = [{
         userImg: "assets/img/meowed.svg",
         user: "meowed",
@@ -21,7 +37,7 @@ export default function Posts () {
             <div class="post">
             <div class="topo">
               <div class="usuario">
-                <img src={item.userImg} />
+                <img src={item.userImg}/>
                 {item.user}
               </div>
               <div class="acoes">
@@ -30,13 +46,15 @@ export default function Posts () {
             </div>
 
             <div class="conteudo">
-              <img src={item.src} />
+              <img src={item.src} onClick={() => isLikedMain()}/>
             </div>
 
             <div class="fundo">
               <div class="acoes">
                 <div>
-                  <ion-icon name="heart-outline"></ion-icon>
+                  <span class={liked}>
+                  <ion-icon name={name} onClick={() => isLiked()}></ion-icon>
+                  </span>
                   <ion-icon name="chatbubble-outline"></ion-icon>
                   <ion-icon name="paper-plane-outline"></ion-icon>
                 </div>
