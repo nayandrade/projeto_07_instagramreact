@@ -1,3 +1,16 @@
+function Story(props) {
+    return (
+        <div class="story">
+            <div class="imagem">
+                <img src={props.src} />
+            </div>
+            <div class="usuario">
+                {props.user}
+            </div>
+        </div>
+    )
+}
+
 export default function Stories () {
     const items = [{
         src: "assets/img/9gag.svg",
@@ -29,14 +42,10 @@ export default function Stories () {
     return ( 
         <div class="stories">
             {items.map((item) => (
-                <div class="story">
-                    <div class="imagem">
-                        <img src={item.src} />
-                    </div>
-                    <div class="usuario">
-                        {item.user}
-                    </div>
-                </div>
+                <Story
+                    src={item.src}
+                    user={item.user}
+                />
             ))}        
             <div class="setinha">
                 <ion-icon name="chevron-forward-circle"></ion-icon>

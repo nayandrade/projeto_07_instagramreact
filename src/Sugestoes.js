@@ -1,14 +1,12 @@
 function Suggestion(props) {
-    return (
-        <div class="sugestao">
+    return (        
             <div class="usuario">
                 <img src={props.src} />
                 <div class="texto">
                     <div class="nome">{props.name}</div>
                     <div class="razao">{props.alt}</div>
                 </div>
-            </div>
-        </div>
+            </div>        
     );
   }
 
