@@ -1,20 +1,8 @@
 import React from 'react';
 import Topo from './Topo';
-import Conteudo from './Conteudo';
 import Fundo from './Fundo';
 
 export default function Posts () {
-
-  const [liked, setLiked] = React.useState("");
-  const [name, setName] = React.useState("heart-outline");
-    function isLiked() {
-        !liked ? setLiked("liked") : setLiked("");
-        !liked ? setName("heart") : setName("heart-outline");
-    }
-    function isLikedMain() {
-        setLiked("liked");
-        setName("heart");
-    }
 
     const items = [{
         userImg: "assets/img/meowed.svg",
@@ -40,19 +28,12 @@ export default function Posts () {
                 userImg={item.userImg}
                 user={item.user}
               />
-
-              <Conteudo
-              src={item.src}
-              data={isLikedMain}              
-              />
             
               <Fundo
-                isLiked={liked}
-                name={name}
+                src={item.src} 
                 likedImg={item.likedImg}
                 liked={item.liked}
-                likes={item.likes}
-                data={isLiked}   
+                likes={item.likes}                  
               />            
           </div>
         ))}
